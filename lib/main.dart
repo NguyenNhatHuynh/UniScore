@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uni_score/screens/average_score_screen.dart';
+import 'package:uni_score/screens/temporary_average_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -147,9 +149,19 @@ class HomeContent extends StatelessWidget {
             () {
               Navigator.push(
                 context,
+                MaterialPageRoute(builder: (context) => AverageScoreScreen()),
+              );
+            },
+          ),
+          _buildCard(
+            context,
+            'Tính trung bình khi thiếu điểm cuối kỳ',
+            Icons.trending_up,
+            () {
+              Navigator.push(
+                context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        DummyScreen(title: 'Tính điểm trung bình môn')),
+                    builder: (context) => TemporaryAverageScreen()),
               );
             },
           ),
