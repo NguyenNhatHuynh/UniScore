@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uni_score/screens/average_score_screen.dart';
 import 'package:uni_score/screens/temporary_average_screen.dart';
 
 void main() {
@@ -91,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home - App Tính Điểm'),
+        title: Text('UniScore'),
         centerTitle: true, // Center the title
         actions: [
           IconButton(
@@ -146,17 +145,6 @@ class HomeContent extends StatelessWidget {
             context,
             'Tính điểm trung bình môn',
             Icons.school,
-            () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AverageScoreScreen()),
-              );
-            },
-          ),
-          _buildCard(
-            context,
-            'Tính trung bình khi thiếu điểm cuối kỳ',
-            Icons.trending_up,
             () {
               Navigator.push(
                 context,

@@ -2,7 +2,7 @@ lib/
 ├── main.dart                     # Điểm vào của ứng dụng, nơi chạy đầu tiên
 ├── screens/                       # Thư mục chứa các màn hình của ứng dụng
 │   ├── home_screen.dart           # Màn hình chính
-│   ├── average_score_screen.dart # Màn hình tính điểm trung bình
+│   ├── temporary_average_screen.dart  # Màn hình tính điểm trung bình môn học
 │   ├── history_screen.dart        # Màn hình lịch sử tính điểm
 │   ├── grade_classification_screen.dart # Màn hình xếp loại điểm
 │   ├── custom_weight_screen.dart  # Màn hình cài đặt trọng số
@@ -28,8 +28,7 @@ lib/
 
 
 
-- temporary_average_screen.dart => màn hình mới cho chức năng tính điểm trung bình môn học khi chỉ có điểm thường xuyên và điểm giữa kỳ, chưa có điểm cuối kỳ. 
-
+- temporary_average_screen.dart => màn hình mới cho chức năng tính điểm trung bình môn học
 
 
 
