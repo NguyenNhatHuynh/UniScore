@@ -59,14 +59,13 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 
 ## ✅ Todo
 ### Giao Diện Người Dùng
-- [ ] Tính điểm trung bình môn: Cho phép nhập điểm và tính toán điểm trung bình.
+- [x] Tính điểm trung bình môn: Cho phép nhập điểm và tính toán điểm trung bình môn học.
 - [ ] Tính điểm GPA: Cung cấp công cụ tính toán GPA theo hệ số.
 - [ ] Lịch sử tính điểm: Lưu trữ kết quả tính điểm và cho phép người dùng xem lại.
 - [ ] Chế độ sáng/tối: Cho phép chuyển đổi giữa chế độ sáng và tối.
 - [ ] Xếp loại tốt nghiệp: Cung cấp xếp loại tốt nghiệp dựa trên điểm GPA.
-- [ ] Xếp loại tốt nghiệp: Cung cấp xếp loại tốt nghiệp dựa trên điểm GPA.
 ### Giao Diện Người Dùng
-- [ ] Trang chủ: Hiển thị các chức năng chính và trạng thái hiện tại của sinh viên.
+- [x] Trang chủ: Hiển thị các chức năng chính và trạng thái hiện tại của sinh viên.
 - [ ] Màn hình tính điểm GPA: Hiển thị công cụ nhập điểm và tính toán GPA.
 - [ ] Màn hình lịch sử tính điểm: Hiển thị các lần tính điểm đã lưu trước đó.
 - [ ] Profile người dùng: Cho phép người dùng cập nhật thông tin cá nhân.
