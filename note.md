@@ -5,7 +5,7 @@ lib/
 │   ├── temporary_average_screen.dart  # Màn hình tính điểm trung bình môn học
 │   ├── history_screen.dart        # Màn hình lịch sử tính điểm
 │   ├── grade_classification_screen.dart # Màn hình xếp loại điểm
-│   ├── custom_weight_screen.dart  # Màn hình cài đặt trọng số
+    |   gpa_calculator_screen.dart # Màn hình tính điểm GPA
 ├── widgets/                       # Thư mục chứa các widget tái sử dụng
 │   ├── function_card.dart         # Widget card hiển thị các chức năng
 │   ├── custom_text_field.dart     # Widget TextField tùy chỉnh (nếu cần)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni_score/screens/gpa_calculator_screen.dart';
 import 'package:uni_score/screens/temporary_average_screen.dart';
 
 void main() {
@@ -160,8 +161,7 @@ class HomeContent extends StatelessWidget {
             () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => DummyScreen(title: 'Tính điểm GPA')),
+                MaterialPageRoute(builder: (context) => GPACalculatorScreen()),
               );
             },
           ),
