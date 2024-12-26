@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GPACalculatorScreen extends StatefulWidget {
   @override
@@ -14,6 +15,14 @@ class _GPACalculatorScreenState extends State<GPACalculatorScreen> {
 
   double _gpa10 = 0.0;
   double _gpa4 = 0.0;
+
+  List<String> _gpaHistory = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadGPAHistory();
+  }
 
   void _addSubject() {
     if (_formKey.currentState!.validate()) {
@@ -46,6 +55,8 @@ class _GPACalculatorScreenState extends State<GPACalculatorScreen> {
       _gpa10 = totalCredits > 0 ? totalPoints10 / totalCredits : 0.0;
       _gpa4 = totalCredits > 0 ? totalPoints4 / totalCredits : 0.0;
     });
+
+    _saveGPAHistory();
   }
 
   double _convertToScale4(double score) {
@@ -54,6 +65,26 @@ class _GPACalculatorScreenState extends State<GPACalculatorScreen> {
     if (score >= 5.5) return 2.0;
     if (score >= 4.0) return 1.0;
     return 0.0;
+  }
+
+  // Save GPA history to local storage
+  Future<void> _saveGPAHistory() async {
+    final prefs = await SharedPreferences.getInstance();
+    final subjectName = _subjects.last['name'];
+    final historyEntry = '$subjectName - GPA 10: $_gpa10, GPA 4: $_gpa4';
+
+    setState(() {
+      _gpaHistory.add(historyEntry);
+    });
+    prefs.setStringList('gpaHistory', _gpaHistory);
+  }
+
+  // Load GPA history from local storage
+  Future<void> _loadGPAHistory() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _gpaHistory = prefs.getStringList('gpaHistory') ?? [];
+    });
   }
 
   @override
@@ -155,91 +186,42 @@ class _GPACalculatorScreenState extends State<GPACalculatorScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
-              Card(
-                elevation: 4.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Danh sách môn học',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      SizedBox(height: 16.0),
-                      if (_subjects.isEmpty)
-                        Center(
-                          child: Text(
-                            'Chưa có môn học nào được thêm!',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 16.0,
-                            ),
-                          ),
-                        )
-                      else
-                        ListView.separated(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: _subjects.length,
-                          separatorBuilder: (context, index) =>
-                              Divider(height: 1.0),
-                          itemBuilder: (context, index) {
-                            final subject = _subjects[index];
-                            return ListTile(
-                              title: Text(subject['name']),
-                              subtitle: Text(
-                                  'Điểm: ${subject['score']} - Tín chỉ: ${subject['credits']}'),
-                              trailing: IconButton(
-                                icon: Icon(Icons.delete, color: Colors.red),
-                                onPressed: () {
-                                  setState(() {
-                                    _subjects.removeAt(index);
-                                    _calculateGPA();
-                                  });
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                    ],
-                  ),
+              SizedBox(height: 20),
+              Text(
+                'Điểm GPA:',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueAccent,
                 ),
               ),
-              SizedBox(height: 16.0),
-              Card(
-                elevation: 4.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Kết quả GPA',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      SizedBox(height: 8.0),
-                      Text('GPA (Thang 10): ${_gpa10.toStringAsFixed(2)}'),
-                      Text('GPA (Thang 4): ${_gpa4.toStringAsFixed(2)}'),
-                    ],
-                  ),
+              Text('GPA 10: $_gpa10', style: TextStyle(fontSize: 16.0)),
+              Text('GPA 4: $_gpa4', style: TextStyle(fontSize: 16.0)),
+              SizedBox(height: 20),
+              Text(
+                'Lịch sử tính điểm:',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueAccent,
                 ),
               ),
+              ..._gpaHistory.map((history) {
+                return Card(
+                  margin: EdgeInsets.only(top: 10),
+                  elevation: 4.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      history,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
+                );
+              }).toList(),
             ],
           ),
         ),
