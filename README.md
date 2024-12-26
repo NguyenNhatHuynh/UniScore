@@ -29,12 +29,14 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 - **SQLite**: Lưu trữ dữ liệu cục bộ (lưu trữ lịch sử tính điểm, môn học yêu thích, v.v.).
 
 ## Screenshots
-<!--  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-    <img src="https://imgur.com/GAs1eMF.png" alt="Image 1" style="width: 45%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-    <img src="https://imgur.com/RSfEyWZ.png" alt="Image 2" style="width: 45%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-    <img src="https://imgur.com/7qqb0Ij.png" alt="Image 3" style="width: 45%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-    <img src="https://imgur.com/oI4HpUu.png" alt="Image 4" style="width: 45%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-</div> -->
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    <img src="https://imgur.com/Y1Ms68J.png" alt="Image 1" style="width: 48%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <img src="https://imgur.com/0TqdjD3.png" alt="Image 2" style="width: 48%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <img src="https://imgur.com/39KTSP8.png" alt="Image 3" style="width: 48%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <img src="https://imgur.com/P35jNx3.png" alt="Image 4" style="width: 48%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+</div>
+
+
 
 ## Hướng Dẫn Cài Đặt 🛠️
 ### Điều Kiện
@@ -58,15 +60,15 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
    flutter run
 
 ## ✅ Todo
-### Giao Diện Người Dùng
+### Chức Năng Ứng Dụng
 - [x] Tính điểm trung bình môn: Cho phép nhập điểm và tính toán điểm trung bình môn học.
-- [ ] Tính điểm GPA: Cung cấp công cụ tính toán GPA theo hệ số.
+- [x] Tính điểm GPA: Cung cấp công cụ tính toán GPA theo hệ số.
 - [ ] Lịch sử tính điểm: Lưu trữ kết quả tính điểm và cho phép người dùng xem lại.
-- [ ] Chế độ sáng/tối: Cho phép chuyển đổi giữa chế độ sáng và tối.
+- [x] Chế độ sáng/tối: Cho phép chuyển đổi giữa chế độ sáng và tối.
 - [ ] Xếp loại tốt nghiệp: Cung cấp xếp loại tốt nghiệp dựa trên điểm GPA.
 ### Giao Diện Người Dùng
 - [x] Trang chủ: Hiển thị các chức năng chính và trạng thái hiện tại của sinh viên.
-- [ ] Màn hình tính điểm GPA: Hiển thị công cụ nhập điểm và tính toán GPA.
+- [x] Màn hình tính điểm GPA: Hiển thị công cụ nhập điểm và tính toán GPA.
 - [ ] Màn hình lịch sử tính điểm: Hiển thị các lần tính điểm đã lưu trước đó.
 - [ ] Profile người dùng: Cho phép người dùng cập nhật thông tin cá nhân.
  
