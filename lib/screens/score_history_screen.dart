@@ -7,68 +7,91 @@ class ScoreHistoryScreen extends StatefulWidget {
 }
 
 class _ScoreHistoryScreenState extends State<ScoreHistoryScreen> {
-  List<Map<String, String>> _gpaHistory = [];
+  List<String> _temporaryAverageHistory = [];
+  String _historyType = 'GPA';
 
   @override
   void initState() {
     super.initState();
-    _loadGPAHistory();
+    _loadHistory();
   }
 
-  Future<void> _loadGPAHistory() async {
+  Future<void> _loadHistory() async {
     final prefs = await SharedPreferences.getInstance();
-    final historyList = prefs.getStringList('gpaHistory') ?? [];
-
+    final historyList = prefs.getStringList(
+            _historyType == 'GPA' ? 'gpaHistory' : 'temporaryAverageHistory') ??
+        [];
     setState(() {
-      _gpaHistory = historyList.map((history) {
-        final parts = history.split(' - ');
-        return {'subject': parts[0], 'gpa': parts[1]};
-      }).toList();
+      _temporaryAverageHistory = historyList;
     });
   }
 
-  // Function to delete the GPA history
-  Future<void> _deleteHistory() async {
+  Future<void> _clearHistory() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('gpaHistory');
+    await prefs.remove(
+        _historyType == 'GPA' ? 'gpaHistory' : 'temporaryAverageHistory');
     setState(() {
-      _gpaHistory.clear();
+      _temporaryAverageHistory.clear();
     });
+  }
+
+  void _deleteHistoryItem(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    _temporaryAverageHistory.removeAt(index);
+    await prefs.setStringList(
+        _historyType == 'GPA' ? 'gpaHistory' : 'temporaryAverageHistory',
+        _temporaryAverageHistory);
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lịch sử tính điểm'),
+        title: const Text('Lịch sử tính điểm'),
         actions: [
           IconButton(
-            icon: Icon(Icons.delete_forever),
-            onPressed: _deleteHistory,
+            icon: const Icon(Icons.delete_forever),
+            onPressed: _clearHistory,
           ),
         ],
       ),
-      body: _gpaHistory.isEmpty
-          ? Center(child: Text('Chưa có lịch sử tính điểm'))
-          : ListView.builder(
-              itemCount: _gpaHistory.length,
+      body: Column(
+        children: [
+          DropdownButton<String>(
+            value: _historyType,
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                setState(() {
+                  _historyType = newValue;
+                  _loadHistory();
+                });
+              }
+            },
+            items: <String>['GPA', 'Điểm trung bình môn']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _temporaryAverageHistory.length,
               itemBuilder: (context, index) {
-                return Card(
-                  margin: EdgeInsets.all(10),
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    title: Text(
-                      'Môn học: ${_gpaHistory[index]['subject']}',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text('GPA: ${_gpaHistory[index]['gpa']}'),
+                return ListTile(
+                  title: Text(_temporaryAverageHistory[index]),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () => _deleteHistoryItem(index),
                   ),
                 );
               },
             ),
+          ),
+        ],
+      ),
     );
   }
 }
