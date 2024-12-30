@@ -1,4 +1,6 @@
 # Ứng Dụng UniScore 📊
+[![Flutter](https://img.shields.io/badge/Flutter-Framework-blue)](https://flutter.dev/) [![Dart](https://img.shields.io/badge/Dart-Language-blue)](https://dart.dev/)
+
 Ứng dụng **"UniScore"** giúp sinh viên tính toán điểm trung bình môn, GPA và theo dõi tiến trình học tập. Ứng dụng cung cấp giao diện thân thiện, dễ sử dụng và hỗ trợ chế độ sáng/tối cho trải nghiệm người dùng tối ưu.
 
 ## Mục Tiêu 🎯
@@ -74,5 +76,6 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
  
 ## Tác giả 👨‍💻
 Tôi sẽ rất cảm kích nếu bạn có thể cho kho lưu trữ này một ngôi sao 🌟. Nó sẽ giúp những người khác khám phá ra điều này. Cảm ơn vì sự hỗ trợ của bạn [Xoan Dev]👨‍💻
+- [x] status Project: Final
    
 
