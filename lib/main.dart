@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_score/screens/gpa_calculator_screen.dart';
+import 'package:uni_score/screens/score_converter_screen.dart';
 import 'package:uni_score/screens/score_history_screen.dart';
 import 'package:uni_score/screens/temporary_average_screen.dart';
 
@@ -25,39 +26,19 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'UniScore',
+      title: 'Uni Score',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.light,
-        appBarTheme: AppBarTheme(
-          color: Colors.blueAccent, // AppBar color
-          elevation: 4,
-          iconTheme:
-              IconThemeData(color: Colors.black), // Icon color in light mode
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: Colors.blueAccent, // Color when selected
-          unselectedItemColor: Colors.grey, // Color when not selected
-        ),
+        iconTheme: IconThemeData(color: Colors.black), // Light mode icons
       ),
       darkTheme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
-        appBarTheme: AppBarTheme(
-          color: Colors.black87, // AppBar color in dark mode
-          elevation: 4,
-          iconTheme:
-              IconThemeData(color: Colors.white), // Icon color in dark mode
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor:
-              Colors.lightBlueAccent, // Selected item color in dark mode
-          unselectedItemColor:
-              Colors.grey, // Unselected item color in dark mode
-        ),
+        iconTheme: IconThemeData(color: Colors.white), // Dark mode icons
       ),
-      themeMode: _themeMode, // Apply the theme mode
-      debugShowCheckedModeBanner: false, // Hide the debug banner
+      themeMode: _themeMode,
+      debugShowCheckedModeBanner: false,
       home: HomeScreen(onThemeChanged: _toggleTheme),
     );
   }
@@ -76,15 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0; // Current index of selected tab
 
   final List<Widget> _screens = [
-    HomeContent(),
-    DummyScreen(title: 'Tính điểm trung bình môn'),
-    DummyScreen(title: 'Tính điểm GPA'),
-    DummyScreen(title: 'Lịch sử tính điểm'),
+    HomeContent(), // Trang chính
+    TemporaryAverageScreen(), // Tính điểm trung bình môn
+    GPACalculatorScreen(), // Tính điểm GPA
+    ScoreHistoryScreen(), // Lịch sử tính điểm
   ];
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index; // Update screen when tab is selected
+      _selectedIndex = index; // Cập nhật màn hình khi chuyển tab
     });
   }
 
@@ -92,40 +73,38 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('UniScore'),
-        centerTitle: true, // Center the title
+        title: Text('Uni Score'),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(Icons.brightness_6),
             onPressed: () {
-              widget.onThemeChanged(); // Toggle theme
+              widget.onThemeChanged(); // Chuyển đổi chế độ sáng/tối
             },
           ),
         ],
-        backgroundColor: Theme.of(context).brightness == Brightness.light
-            ? Colors.blueAccent
-            : Colors.black87, // Update color based on theme
       ),
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Theme.of(context).iconTheme.color),
             label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Tính điểm trung bình môn',
+            icon: Icon(Icons.school, color: Theme.of(context).iconTheme.color),
+            label: 'Tính điểm trung bình',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calculate),
-            label: 'Tính điểm GPA',
+            icon:
+                Icon(Icons.calculate, color: Theme.of(context).iconTheme.color),
+            label: 'Tính GPA',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Lịch sử tính điểm',
+            icon: Icon(Icons.history, color: Theme.of(context).iconTheme.color),
+            label: 'Lịch sử',
           ),
         ],
       ),
@@ -151,7 +130,8 @@ class HomeContent extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => TemporaryAverageScreen()),
+                  builder: (context) => TemporaryAverageScreen(),
+                ),
               );
             },
           ),
@@ -162,7 +142,9 @@ class HomeContent extends StatelessWidget {
             () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => GPACalculatorScreen()),
+                MaterialPageRoute(
+                  builder: (context) => GPACalculatorScreen(),
+                ),
               );
             },
           ),
@@ -173,20 +155,9 @@ class HomeContent extends StatelessWidget {
             () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ScoreHistoryScreen()),
-              );
-            },
-          ),
-          _buildCard(
-            context,
-            'Xếp loại tốt nghiệp',
-            Icons.star,
-            () {
-              Navigator.push(
-                context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        DummyScreen(title: 'Xếp loại tốt nghiệp')),
+                  builder: (context) => ScoreHistoryScreen(),
+                ),
               );
             },
           ),
@@ -198,21 +169,8 @@ class HomeContent extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        DummyScreen(title: 'Chuyển đổi hệ điểm')),
-              );
-            },
-          ),
-          _buildCard(
-            context,
-            'Nhắc nhở học tập',
-            Icons.notifications,
-            () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        DummyScreen(title: 'Nhắc nhở học tập')),
+                  builder: (context) => ScoreConverterScreen(),
+                ),
               );
             },
           ),
@@ -228,52 +186,21 @@ class HomeContent extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      color: Theme.of(context).cardColor,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 40,
-              color: Theme.of(context).brightness == Brightness.light
-                  ? Colors.blueAccent
-                  : Colors.white,
-            ),
+            Icon(icon, size: 40, color: Theme.of(context).iconTheme.color),
             SizedBox(height: 10),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).brightness == Brightness.light
-                    ? Colors.blueAccent
-                    : Colors.white,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// Dummy Screen for simulated functions
-class DummyScreen extends StatelessWidget {
-  final String title;
-
-  DummyScreen({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Text('Màn hình chi tiết của chức năng: $title'),
       ),
     );
   }
