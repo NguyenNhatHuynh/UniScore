@@ -65,12 +65,12 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 - [x] Tính điểm GPA: Cung cấp công cụ tính toán GPA theo hệ số.
 - [x] Lịch sử tính điểm: Lưu trữ kết quả tính điểm và cho phép người dùng xem lại.
 - [x] Chế độ sáng/tối: Cho phép chuyển đổi giữa chế độ sáng và tối.
-- [ ] Xếp loại tốt nghiệp: Cung cấp xếp loại tốt nghiệp dựa trên điểm GPA.
+- [x] Chuyển đổi điểm số: Chức năng chuyển đổi điểm số từ thang điểm 4 đến 10 rồi từ 10 đến 4.
 ### Giao Diện Người Dùng
 - [x] Trang chủ: Hiển thị các chức năng chính và trạng thái hiện tại của sinh viên.
 - [x] Màn hình tính điểm GPA: Hiển thị công cụ nhập điểm và tính toán GPA.
 - [x] Màn hình lịch sử tính điểm: Hiển thị các lần tính điểm đã lưu trước đó.
-- [ ] Profile người dùng: Cho phép người dùng cập nhật thông tin cá nhân.
+- [x] Màn hình chuyển đổi điểm số: Cho phép người dùng nhập điểm số và check vào thang điểm muốn đổi điểm số.
  
 ## Tác giả 👨‍💻
 Tôi sẽ rất cảm kích nếu bạn có thể cho kho lưu trữ này một ngôi sao 🌟. Nó sẽ giúp những người khác khám phá ra điều này. Cảm ơn vì sự hỗ trợ của bạn [Xoan Dev]👨‍💻
