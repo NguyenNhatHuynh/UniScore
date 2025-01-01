@@ -13,7 +13,6 @@
 - **Tính điểm trung bình môn** 🎓: Cho phép nhập điểm các môn học và tính toán điểm trung bình môn.
 - **Tính điểm GPA** 📈: Tính toán điểm GPA dựa trên các hệ số môn học.
 - **Lịch sử tính điểm** 📜: Lưu trữ kết quả tính điểm theo thời gian.
-- **Xếp loại tốt nghiệp** 🏅: Giúp sinh viên xác định xếp loại tốt nghiệp dựa trên điểm GPA.
 - **Chế độ sáng/tối** 🌞🌜: Người dùng có thể chuyển đổi giữa chế độ sáng và chế độ tối theo sở thích cá nhân.
 
 ## Cấu Trúc Dự Án 📁
@@ -28,7 +27,7 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 ## Công Nghệ Sử Dụng ⚙️
 - **Flutter**: Framework để phát triển ứng dụng di động.
 - **Provider** hoặc **Riverpod**: Quản lý trạng thái.
-- **SQLite**: Lưu trữ dữ liệu cục bộ (lưu trữ lịch sử tính điểm, môn học yêu thích, v.v.).
+- **Shared Preferences**: Lưu trữ dữ liệu cục bộ (lưu trữ lịch sử tính điểm, môn học yêu thích, v.v.).
 
 ## Screenshots
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
