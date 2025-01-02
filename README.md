@@ -26,7 +26,7 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 
 ## Công Nghệ Sử Dụng ⚙️
 - **Flutter**: Framework để phát triển ứng dụng di động.
-- **Provider** hoặc **Riverpod**: Quản lý trạng thái.
+- **Provider**: Quản lý trạng thái.
 - **Shared Preferences**: Lưu trữ dữ liệu cục bộ (lưu trữ lịch sử tính điểm, môn học yêu thích, v.v.).
 
 ## Screenshots
