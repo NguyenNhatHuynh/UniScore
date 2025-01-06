@@ -30,6 +30,7 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 - **Shared Preferences**: Lưu trữ dữ liệu cục bộ (lưu trữ lịch sử tính điểm, môn học yêu thích, v.v.).
 
 ## Screenshots
+<img src="https://imgur.com/ImTaCvq.png" alt="Banner" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
     <img src="https://imgur.com/Y1Ms68J.png" alt="Image 1" style="width: 48%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
     <img src="https://imgur.com/0TqdjD3.png" alt="Image 2" style="width: 48%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
