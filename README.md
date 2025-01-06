@@ -29,6 +29,9 @@ Dự án sử dụng Flutter để phát triển ứng dụng di động với c
 - **Provider**: Quản lý trạng thái.
 - **Shared Preferences**: Lưu trữ dữ liệu cục bộ (lưu trữ lịch sử tính điểm, môn học yêu thích, v.v.).
 
+## Link Video Demo
+[Link Video Youtube](https://youtu.be/QbQNyC2kZbE?si=15u_jsflFICL9pBA)
+
 ## Screenshots
 <img src="https://imgur.com/ImTaCvq.png" alt="Banner" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
